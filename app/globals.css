@@ -1,0 +1,336 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Removed Google Fonts CSS import - now handled by Next.js font system */
+
+:root {
+  /* Updated color palette to match Onda Educacional brand colors */
+  --background: #f6f6f6;
+  --foreground: #2d2d2d;
+  --card: #ffffff;
+  --card-foreground: #2d2d2d;
+  --popover: #ffffff;
+  --popover-foreground: #2d2d2d;
+  --primary: #6c256f;
+  --primary-foreground: #ffffff;
+  --secondary: #009bac;
+  --secondary-foreground: #ffffff;
+  --muted: #e0f1f5;
+  --muted-foreground: #556b7d;
+  --accent: #4dbdc6;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #dbbfdd;
+  --input: #ffffff;
+  --ring: #9e61a4;
+  --chart-1: #6c256f;
+  --chart-2: #009bac;
+  --chart-3: #4dbdc6;
+  --chart-4: #8c4091;
+  --chart-5: #77c8d2;
+  --radius: 0.75rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #2d2d2d;
+  --sidebar-primary: #6c256f;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #009bac;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #dbbfdd;
+  --sidebar-ring: #9e61a4;
+}
+
+.dark {
+  --background: #1a1a1a;
+  --foreground: #f6f6f6;
+  --card: #2d2d2d;
+  --card-foreground: #f6f6f6;
+  --popover: #2d2d2d;
+  --popover-foreground: #f6f6f6;
+  --primary: #9e61a4;
+  --primary-foreground: #ffffff;
+  --secondary: #4dbdc6;
+  --secondary-foreground: #ffffff;
+  --muted: #3a3a3a;
+  --muted-foreground: #a0a0a0;
+  --accent: #77c8d2;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #4a4a4a;
+  --input: #3a3a3a;
+  --ring: #9e61a4;
+  --chart-1: #9e61a4;
+  --chart-2: #4dbdc6;
+  --chart-3: #77c8d2;
+  --chart-4: #8c4091;
+  --chart-5: #96d3dd;
+  --radius: 0.75rem;
+  --sidebar: #2d2d2d;
+  --sidebar-foreground: #f6f6f6;
+  --sidebar-primary: #9e61a4;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #4dbdc6;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #4a4a4a;
+  --sidebar-ring: #9e61a4;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  /* Updated Montserrat font variable to use Next.js font system */
+  --font-montserrat: var(--font-montserrat);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Added custom animations for modern interactions */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(108, 37, 111, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(108, 37, 111, 0.6);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes stagger-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Added floating bubble animations for interactive letters */
+@keyframes bubble-float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-5px) rotate(-1deg);
+  }
+}
+
+@keyframes bubble-pulse {
+  0%,
+  100% {
+    opacity: 0.1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes wave-ripple {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.6s ease-out forwards;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
+}
+
+/* Added bubble-specific animation classes */
+.animate-bubble-float {
+  animation: bubble-float 4s ease-in-out infinite;
+}
+
+.animate-bubble-pulse {
+  animation: bubble-pulse 3s ease-in-out infinite;
+}
+
+.animate-wave-ripple {
+  animation: wave-ripple 0.6s ease-out forwards;
+}
+
+.stagger-animation {
+  animation: stagger-fade-in 0.6s ease-out forwards;
+}
+
+.stagger-animation:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.stagger-animation:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.stagger-animation:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.stagger-animation:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+/* Added smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Added custom gradient backgrounds */
+.gradient-primary {
+  background: linear-gradient(135deg, #6c256f 0%, #8c4091 50%, #9e61a4 100%);
+}
+
+.gradient-secondary {
+  background: linear-gradient(135deg, #009bac 0%, #4dbdc6 50%, #77c8d2 100%);
+}
+
+.gradient-accent {
+  background: linear-gradient(135deg, #77c8d2 0%, #96d3dd 50%, #e0f1f5 100%);
+}
+
+.gradient-hero {
+  background: linear-gradient(135deg, #6c256f 0%, #009bac 50%, #4dbdc6 100%);
+}
+
+.primary-light {
+  color: #9e61a4;
+}
+
+.secondary-light {
+  color: #77c8d2;
+}
+
+.neutral {
+  color: #f6f6f6;
+}
+
+/* Added Montserrat font utility class */
+.font-montserrat {
+  font-family: var(--font-montserrat);
+}
+
+/* Added advanced modern animations and glass morphism effects */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Added custom focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
