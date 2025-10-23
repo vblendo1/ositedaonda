@@ -53,7 +53,7 @@ O `AuraBackground` é um componente React altamente visual que cria um efeito de
 
 ### Instalação Básica
 
-```tsx
+\`\`\`tsx
 import AuraBackground from './components/ui/AuraBackground';
 
 function Hero() {
@@ -64,18 +64,18 @@ function Hero() {
     </div>
   );
 }
-```
+\`\`\`
 
 ### Requisitos do Container Pai
 
 O elemento pai **deve ter** `position: relative`:
 
-```tsx
+\`\`\`tsx
 <div className="relative overflow-hidden">
   <AuraBackground />
   {/* Conteúdo */}
 </div>
-```
+\`\`\`
 
 ## 🔧 Personalização
 
@@ -83,28 +83,28 @@ O elemento pai **deve ter** `position: relative`:
 
 Edite as cores rgba em cada camada:
 
-```tsx
+\`\`\`tsx
 // Exemplo: Mudar para verde
 background: 'radial-gradient(
   circle closest-side,
   rgba(0, 255, 100, 0.25) 0%,
   transparent 100%
 )'
-```
+\`\`\`
 
 ### Ajustar Intensidade do Blur
 
-```tsx
+\`\`\`tsx
 // Menos desfoque (mais nítido)
 filter: 'blur(20px)'
 
 // Mais desfoque (mais etéreo)
 filter: 'blur(80px)'
-```
+\`\`\`
 
 ### Modificar Velocidade das Animações
 
-```tsx
+\`\`\`tsx
 transition={{
   duration: 10,  // Mais rápido
   // ou
@@ -112,11 +112,11 @@ transition={{
   repeat: Infinity,
   ease: 'easeInOut',
 }}
-```
+\`\`\`
 
 ## 📐 Camadas Z-Index
 
-```
+\`\`\`
 Stack de Camadas (de baixo para cima):
 ─────────────────────────────────────
 -10  → AuraBackground (este componente)
@@ -124,7 +124,7 @@ Stack de Camadas (de baixo para cima):
   1  → Elementos com z-index positivo
  50  → Navbar
 100  → Modais
-```
+\`\`\`
 
 ## ⚡ Performance
 
@@ -177,7 +177,7 @@ Stack de Camadas (de baixo para cima):
 
 ### Adicionar Suporte a prefers-reduced-motion
 
-```tsx
+\`\`\`tsx
 // Adicione esta verificação se necessário
 const prefersReducedMotion = window.matchMedia(
   '(prefers-reduced-motion: reduce)'
@@ -188,7 +188,7 @@ animate={prefersReducedMotion ? {} : {
   x: [-20, 20, -20],
   // ... resto da animação
 }}
-```
+\`\`\`
 
 ## 🐛 Troubleshooting
 
@@ -214,7 +214,7 @@ animate={prefersReducedMotion ? {} : {
 
 ## 📝 Exemplo Completo
 
-```tsx
+\`\`\`tsx
 import { motion } from 'framer-motion';
 import AuraBackground from './components/ui/AuraBackground';
 
@@ -242,37 +242,37 @@ export function LandingHero() {
     </div>
   );
 }
-```
+\`\`\`
 
 ## 🎨 Variações Criativas
 
 ### Variação: Tema Escuro
 
-```tsx
+\`\`\`tsx
 // Substitua as cores por tons escuros
 background: 'radial-gradient(
   circle closest-side,
   rgba(108, 37, 111, 0.5) 0%,  // Opacidade maior
   transparent 100%
 )'
-```
+\`\`\`
 
 ### Variação: Movimento Rápido
 
-```tsx
+\`\`\`tsx
 // Reduza todas as durações pela metade
 duration: 10,  // ao invés de 20
 duration: 12,  // ao invés de 25
 duration: 7,   // ao invés de 15
-```
+\`\`\`
 
 ### Variação: Efeito Sutil
 
-```tsx
+\`\`\`tsx
 // Reduza opacidades e blur
 rgba(108, 37, 111, 0.1)  // ao invés de 0.25
 filter: 'blur(20px)'      // ao invés de 40px
-```
+\`\`\`
 
 ## 📊 Métricas
 

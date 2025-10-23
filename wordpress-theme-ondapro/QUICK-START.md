@@ -10,10 +10,10 @@ Uma pasta `wordpress-theme-ondapro/` com todos os arquivos necessários para cri
 
 ### Passo 1: Compactar o Tema
 
-```bash
+\`\`\`bash
 # No diretório onde está a pasta wordpress-theme-ondapro
 zip -r ondapro-theme.zip wordpress-theme-ondapro/
-```
+\`\`\`
 
 Ou no Windows: Clique com botão direito na pasta > Enviar para > Pasta compactada
 
@@ -34,9 +34,9 @@ Ou no Windows: Clique com botão direito na pasta > Enviar para > Pasta compacta
 #### Opção A: Manual
 
 1. No seu projeto React atual, rode:
-```bash
+\`\`\`bash
 npm run build
-```
+\`\`\`
 
 2. Copie os arquivos:
    - `dist/assets/index-*.js` → `wordpress-theme-ondapro/assets/js/app.js`
@@ -66,7 +66,7 @@ Use o script de deploy descrito no `MIGRATION-GUIDE.md`
 
 ## 📁 Estrutura de Arquivos
 
-```
+\`\`\`
 wordpress-theme-ondapro/
 ├── style.css              # Metadados do tema
 ├── functions.php          # Funcionalidades (AJAX, CPT, etc)
@@ -87,7 +87,7 @@ wordpress-theme-ondapro/
     │   └── app.css       # CSS compilado (você adiciona)
     └── images/
         └── (suas imagens)
-```
+\`\`\`
 
 ## ✅ Funcionalidades Incluídas
 
@@ -116,18 +116,18 @@ wordpress-theme-ondapro/
 
 ### Dados Disponíveis
 
-```javascript
+\`\`\`javascript
 // Acessível globalmente após carregamento do tema
 window.ondaproData = {
   ajaxUrl: 'https://seusite.com/wp-admin/admin-ajax.php',
   nonce: 'token_seguranca',
   siteUrl: 'https://seusite.com'
 }
-```
+\`\`\`
 
 ### Enviar Formulário
 
-```javascript
+\`\`\`javascript
 const response = await fetch(ondaproData.ajaxUrl, {
   method: 'POST',
   headers: {
@@ -146,7 +146,7 @@ const response = await fetch(ondaproData.ajaxUrl, {
 
 const result = await response.json();
 console.log(result); // { success: true, data: { message: '...' } }
-```
+\`\`\`
 
 ## 🎯 Pontos de Montagem React
 
@@ -188,15 +188,15 @@ O tema define 3 divs onde você pode montar componentes React:
 
 Edite em `functions.php`:
 
-```php
+\`\`\`php
 $admin_email = get_option('admin_email'); // Trocar por e-mail fixo se necessário
-```
+\`\`\`
 
 ### Adicionar nova funcionalidade
 
 Crie um novo handler AJAX em `functions.php`:
 
-```php
+\`\`\`php
 function ondapro_custom_action() {
     check_ajax_referer('ondapro_nonce', 'nonce');
 
@@ -206,7 +206,7 @@ function ondapro_custom_action() {
 }
 add_action('wp_ajax_custom_action', 'ondapro_custom_action');
 add_action('wp_ajax_nopriv_custom_action', 'ondapro_custom_action');
-```
+\`\`\`
 
 ## 🚀 Deploy em Produção
 

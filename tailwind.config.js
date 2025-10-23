@@ -25,7 +25,7 @@ export default {
    * Ele só inclui no CSS final as classes que realmente estão sendo usadas.
    * Isso mantém o arquivo CSS pequeno e rápido! (técnica chamada "tree-shaking")
    */
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}', "*.{js,ts,jsx,tsx,mdx}"],
 
   theme: {
     /**

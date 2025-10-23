@@ -20,7 +20,7 @@ Este tema foi desenvolvido para criar uma landing page one-page moderna e otimiz
 
 Dentro da pasta do tema, crie a seguinte estrutura:
 
-```
+\`\`\`
 wordpress-theme-ondapro/
 ├── assets/
 │   ├── js/
@@ -32,7 +32,7 @@ wordpress-theme-ondapro/
 ├── inc/
 │   └── (arquivos auxiliares opcionais)
 └── (arquivos já criados)
-```
+\`\`\`
 
 ### 3. Compilar Aplicação React
 
@@ -41,9 +41,9 @@ wordpress-theme-ondapro/
 #### Opção A: Build Manual
 
 1. Na pasta do seu projeto React/Vite atual, rode:
-```bash
+\`\`\`bash
 npm run build
-```
+\`\`\`
 
 2. Copie os arquivos gerados em `dist/` para:
    - `dist/assets/index-*.js` → `wordpress-theme-ondapro/assets/js/app.js`
@@ -54,17 +54,17 @@ npm run build
 
 Adicione um script no `package.json` do seu projeto React:
 
-```json
+\`\`\`json
 {
   "scripts": {
     "build:wp": "vite build && node scripts/copy-to-wp.js"
   }
 }
-```
+\`\`\`
 
 Crie o arquivo `scripts/copy-to-wp.js`:
 
-```javascript
+\`\`\`javascript
 const fs = require('fs-extra');
 const path = require('path');
 
@@ -105,7 +105,7 @@ fs.copySync(
 );
 
 console.log('✅ Arquivos copiados para o tema WordPress!');
-```
+\`\`\`
 
 ## 📦 Funcionalidades
 
@@ -123,7 +123,7 @@ O tema inclui um handler AJAX para processar formulários de contato.
 
 **Exemplo de uso no React:**
 
-```javascript
+\`\`\`javascript
 const handleSubmit = async (formData) => {
   const response = await fetch(ondaproData.ajaxUrl, {
     method: 'POST',
@@ -149,7 +149,7 @@ const handleSubmit = async (formData) => {
     console.error('❌ Erro:', result.data.message);
   }
 };
-```
+\`\`\`
 
 ### 3. Customizer - Opções do Tema
 
@@ -162,10 +162,10 @@ Você pode configurar:
 
 **Acessar no React:**
 
-```javascript
+\`\`\`javascript
 // Os dados estarão disponíveis globalmente em ondaproData
 console.log(ondaproData);
-```
+\`\`\`
 
 ### 4. Áreas de Widget (Sidebars)
 
@@ -182,13 +182,13 @@ O tema registra 3 áreas de widget no rodapé:
 
 O tema expõe a variável global `ondaproData` com:
 
-```javascript
+\`\`\`javascript
 {
   ajaxUrl: 'https://seusite.com/wp-admin/admin-ajax.php',
   nonce: 'token_segurança',
   siteUrl: 'https://seusite.com'
 }
-```
+\`\`\`
 
 ### Pontos de Montagem React
 
@@ -200,7 +200,7 @@ O tema define os seguintes pontos de montagem:
 
 **Exemplo de inicialização no seu app.js:**
 
-```javascript
+\`\`\`javascript
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
@@ -224,7 +224,7 @@ const footerRoot = document.getElementById('footer-root');
 if (footerRoot) {
   ReactDOM.createRoot(footerRoot).render(<Footer />);
 }
-```
+\`\`\`
 
 ## 📱 Configurações Recomendadas
 
@@ -251,7 +251,7 @@ if (footerRoot) {
 
 ### Estrutura de Arquivos
 
-```
+\`\`\`
 wordpress-theme-ondapro/
 ├── style.css          # Metadados do tema + estilos WordPress core
 ├── functions.php      # Funcionalidades do tema
@@ -262,13 +262,13 @@ wordpress-theme-ondapro/
 ├── page.php           # Template de páginas
 ├── single.php         # Template de posts
 └── README.md          # Este arquivo
-```
+\`\`\`
 
 ### Enfileirando Scripts Adicionais
 
 Adicione no `functions.php`:
 
-```php
+\`\`\`php
 function ondapro_custom_scripts() {
     wp_enqueue_script(
         'custom-script',
@@ -279,13 +279,13 @@ function ondapro_custom_scripts() {
     );
 }
 add_action('wp_enqueue_scripts', 'ondapro_custom_scripts');
-```
+\`\`\`
 
 ### Adicionando Estilos Customizados
 
 Adicione no `functions.php`:
 
-```php
+\`\`\`php
 function ondapro_custom_styles() {
     wp_enqueue_style(
         'custom-css',
@@ -295,7 +295,7 @@ function ondapro_custom_styles() {
     );
 }
 add_action('wp_enqueue_scripts', 'ondapro_custom_styles');
-```
+\`\`\`
 
 ## 🔒 Segurança
 
@@ -341,10 +341,10 @@ Por padrão, quando um lead é capturado:
 
 1. Verifique erros PHP no `wp-content/debug.log`
 2. Ative o modo debug no `wp-config.php`:
-```php
+\`\`\`php
 define('WP_DEBUG', true);
 define('WP_DEBUG_LOG', true);
-```
+\`\`\`
 
 ### Scripts não carregam
 

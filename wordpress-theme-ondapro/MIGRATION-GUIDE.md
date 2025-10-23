@@ -17,7 +17,7 @@ Este guia explica passo a passo como migrar sua landing page React/Vite atual pa
 
 No seu projeto React atual, atualize o `vite.config.ts`:
 
-```typescript
+\`\`\`typescript
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
@@ -43,13 +43,13 @@ export default defineConfig({
     }
   }
 })
-```
+\`\`\`
 
 #### 1.2 Criar Script de Deploy
 
 Crie o arquivo `scripts/deploy-to-wp.js` no seu projeto React:
 
-```javascript
+\`\`\`javascript
 const fs = require('fs-extra');
 const path = require('path');
 
@@ -136,13 +136,13 @@ console.log('1. Compacte a pasta wordpress-theme-ondapro em .zip');
 console.log('2. Faça upload no WordPress Admin > Aparência > Temas');
 console.log('3. Ative o tema');
 console.log('4. Configure as opções no Personalizador\n');
-```
+\`\`\`
 
 #### 1.3 Adicionar Scripts ao package.json
 
 Adicione no seu `package.json`:
 
-```json
+\`\`\`json
 {
   "scripts": {
     "build": "vite build",
@@ -150,13 +150,13 @@ Adicione no seu `package.json`:
     "deploy": "npm run build:wp"
   }
 }
-```
+\`\`\`
 
 #### 1.4 Instalar Dependência
 
-```bash
+\`\`\`bash
 npm install fs-extra --save-dev
-```
+\`\`\`
 
 ### Etapa 2: Adaptar Componentes React
 
@@ -164,7 +164,7 @@ npm install fs-extra --save-dev
 
 Modifique seu `src/App.tsx` para ser compatível com WordPress:
 
-```typescript
+\`\`\`typescript
 import { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -219,13 +219,13 @@ function App() {
 }
 
 export default App;
-```
+\`\`\`
 
 #### 2.2 Atualizar ContactForm.tsx
 
 Adapte o formulário para usar AJAX do WordPress:
 
-```typescript
+\`\`\`typescript
 const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
   setIsSubmitting(true);
@@ -265,15 +265,15 @@ const handleSubmit = async (e: React.FormEvent) => {
     setIsSubmitting(false);
   }
 };
-```
+\`\`\`
 
 ### Etapa 3: Build e Deploy
 
 #### 3.1 Fazer Build
 
-```bash
+\`\`\`bash
 npm run build:wp
-```
+\`\`\`
 
 Isso irá:
 - Compilar a aplicação React
@@ -290,10 +290,10 @@ Confirme que os seguintes arquivos foram criados:
 
 #### 4.1 Compactar Tema
 
-```bash
+\`\`\`bash
 cd ..
 zip -r ondapro-theme.zip wordpress-theme-ondapro/
-```
+\`\`\`
 
 #### 4.2 Instalar no WordPress
 
@@ -359,9 +359,9 @@ Verifique se:
 1. Verifique se arquivos CSS foram copiados
 2. Adicione enfileiramento manual no `functions.php`:
 
-```php
+\`\`\`php
 wp_enqueue_style('ondapro-compiled', get_template_directory_uri() . '/assets/css/app.css', array(), '1.0.0');
-```
+\`\`\`
 
 ### Problema: Formulário não envia
 
@@ -375,15 +375,15 @@ wp_enqueue_style('ondapro-compiled', get_template_directory_uri() . '/assets/css
 **Solução:**
 1. Use caminhos absolutos para imagens:
 
-```javascript
+\`\`\`javascript
 const imageUrl = `${window.ondaproData?.siteUrl}/wp-content/themes/ondapro/assets/images/logo.png`;
-```
+\`\`\`
 
 2. Ou use import do Vite (preferível):
 
-```javascript
+\`\`\`javascript
 import logo from '@/assets/images/logo.png';
-```
+\`\`\`
 
 ## 📝 Checklist Final
 
